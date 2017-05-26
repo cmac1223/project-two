@@ -1,2 +1,24 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+h1>Users</h1>
+
+<ul>
+    {{# each restaurantList}}
+        <li>
+            <div><a href="/restaurants/{{_id}}">View User</a></div>
+            <div><a href="/restaurants/delete/{{_id}}">Delete User</a></div>
+            <div>ID: {{_id}}</div>
+            <div> Name: {{name}}</div>
+            <div>Description: {{description}}</div>
+            <div>Phone: {{phone}}</div>
+            <div>Items: 
+                <ul>
+                    {{# each items}}
+                        <li>Name: {{name}}</li>
+                    {{/ each}}
+                </ul>
+            </div>
+        </li>
+        <br>
+    {{/ each}}
+</ul>
+
+<div><a href="/restaurants/new">Create a New User</a></div>
