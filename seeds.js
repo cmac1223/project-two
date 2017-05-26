@@ -18,4 +18,5 @@ tassilisRawReality.save(function(error){
         console.log(error);
         return;
     }
+    console.log('saved tassilis')
 })
