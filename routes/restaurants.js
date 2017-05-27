@@ -132,7 +132,7 @@ router.put('/:id', function (request, response) {
     // then find the user in the database, and update its info to
     // match what was updated in the form
     // (remember to pass { new: true })
-    User.findByIdAndUpdate(userId, newUserInfo, { new: true })
+    Restaurant.findByIdAndUpdate(userId, newUserInfo, { new: true })
         .exec(function (error, user) {
 
             if (error) {

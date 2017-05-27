@@ -1,5 +1,5 @@
 <div>
-    <div>Id: {{user.id}}</div>
+    <div>Id: {{user._id}}</div>
 
     <h1>Name: {{user.name}}</h1>
     <h2>Description: {{user.description}}</h2>
@@ -14,8 +14,8 @@
         </ul>
     </h3>
 
-    <div><a href="/restaurants/edit/{{restaurants.id}}">Edit This restaurant</a></div>
-    <div><a href="/restaurants/{{restaurants.id}}/items/new">Add a New Item</a></div>
+    <div><a href="/restaurants/edit/{{user.id}}">Edit This restaurant</a></div>
+    <div><a href="/restaurants/{{restaurants._id}}/items/new">Add a New Item</a></div>
     <div><a href="/restaurants" class="btn btn-default">Main Page</a></div>
 
 </div>
