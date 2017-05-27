@@ -1,4 +1,3 @@
-
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
@@ -24,13 +23,11 @@ RestaurantSchema.pre('save', function(next){
     next();
 });
 
-module.exports = mongoose.model("Restaurant", RestaurantSchema);
 
+var RestaurantModel = mongoose.model("Restaurant", RestaurantSchema);
+//var ItemModel = mongoose.model("Item", ItemSchema);
 
- //var RestaurantModel = mongoose.model("Restaurant", RestaurantSchema);
-// var ItemModel = mongoose.model("Item", ItemSchema);
-
-// module.exports = {
-//     User: RestaurantModel
-    // Item: ItemModel
-//};
+module.exports = {
+  Restaurant: RestaurantModel
+  //Item: ItemModel
+};

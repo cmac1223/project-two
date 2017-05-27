@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var Restaurant = require('../models/restaurant');
+// var Restaurant = require('../models/restaurant');
+var Restaurant = require('../models/res');
 
 
 
@@ -147,6 +148,26 @@ router.put('/:id', function (request, response) {
         });
 
 });
+
+//user delete
+router.get('/delete/:id', function(request, response){
+    
+    // assign the id parameters to a variable 
+    var userId = request.params.id;
+
+    // then find and delete the user, using the id
+    Restaurant.findByIdAndRemove(userId)
+    .exec(function (error, user){
+
+        if (error) {
+            console.log("Error while deleting User with ID of " + userId)
+            return;
+        }
+
+        // redirect back to unser index once user has been deleted
+        response.redirect('/restaurants');
+    })
+})
 
 
 
