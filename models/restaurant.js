@@ -3,10 +3,10 @@ var Schema = mongoose.Schema;
 
 mongoose.promise = global.Promise;
 
-var RestaurantSchema = Schema({
+var RestaurantSchema = new Schema({
     name: String,
     description: String,
-    phoneNumber: Number,
+    phoneNumber: String
     //nested models??
 });
 

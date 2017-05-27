@@ -1,0 +1,21 @@
+<div>
+    <div>Id: {{user.id}}</div>
+
+    <h1>Name: {{user.name}}</h1>
+    <h2>Description: {{user.description}}</h2>
+    
+    <h3>Items: 
+        <ul>
+            {{# each restaurants.items}}
+                <span><li>Name: {{name}}</li></span> 
+                <span><a href="/restaurants/{{../restaurants.id}}/items/{{_id}}/edit">Edit</a></span>
+                <span><a href="/restaurants//{{../restaurants.id}}/items/{{id}}/delete">Delete</a></span>
+            {{/ each}}
+        </ul>
+    </h3>
+
+    <div><a href="/restaurants/edit/{{restaurants.id}}">Edit This restaurant</a></div>
+    <div><a href="/restaurants/{{restaurants.id}}/items/new">Add a New Item</a></div>
+    <div><a href="/restaurants" class="btn btn-default">Main Page</a></div>
+
+</div>

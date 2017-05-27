@@ -3,12 +3,12 @@
 <ul>
     {{#each restaurantList}}
         <li>
-            <div><a href="/restaurants/{{_id}}">View User</a></div>
-            <div><a href="/restaurants/delete/{{_id}}">Delete User</a></div>
+            <div><a href="/restaurants/{{_id}}">Check Out Restaurants</a></div>
+            <div><a href="/restaurants/delete/{{_id}}">Delete Restaurants</a></div>
             <div>ID: {{_id}}</div>
-            <div> Name: {{name}}</div>
-            <div>Description: {{description}}</div>
-            <div>Phone: {{phone}}</div>
+            <h1> Name: {{name}}</h1>
+            <h2>Description: {{description}}</h2>
+            <div>PhoneNumber: {{phoneNumber}}</div>
             <div>Items: 
                 <ul>
                     {{# each items}}
