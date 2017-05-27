@@ -25,9 +25,9 @@ RestaurantSchema.pre('save', function(next){
 
 
 var RestaurantModel = mongoose.model("Restaurant", RestaurantSchema);
-//var ItemModel = mongoose.model("Item", ItemSchema);
+var ItemModel = mongoose.model("Item", ItemSchema);
 
 module.exports = {
-  Restaurant: RestaurantModel
-  //Item: ItemModel
+  Restaurant: RestaurantModel,
+  Item: ItemModel
 };

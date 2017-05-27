@@ -1,36 +1,5 @@
-
+var Schema = require("../db/schema");
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
-mongoose.promise = global.Promise;
-
-var ItemSchema = new Schema({
-    name: String
-});
-
-var RestaurantSchema = new Schema({
-    name: String,
-    description: String,
-    phoneNumber: String,
-    items: [ItemSchema]
-});
-
-RestaurantSchema.pre('save', function(next){
-    now = new Date();
-    this.updated_at = now;
-    if (!this.created_at){
-        this.created_at = now;
-    }
-    next();
-});
-
-module.exports = mongoose.model("Restaurant", RestaurantSchema);
-
-
- //var RestaurantModel = mongoose.model("Restaurant", RestaurantSchema);
-// var ItemModel = mongoose.model("Item", ItemSchema);
-
-// module.exports = {
-//     User: RestaurantModel
-    // Item: ItemModel
-//};
+var Restaurant = Schema.Restaurant;
+module.exports = Restaurant;

@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 // var Restaurant = require('../models/restaurant');
-var Restaurant = require('../models/res');
+var Restaurant = require('../models/restaurant');
+var Item = require("../models/item")
 
 
 
@@ -167,7 +168,52 @@ router.get('/delete/:id', function(request, response){
         // redirect back to unser index once user has been deleted
         response.redirect('/restaurants');
     })
-})
+});
+
+// SHOW NEW ITEM FORM
+router.get('/:userId/items/new', function (request, response) {
+
+    // grab the ID of the user we want to create a new item for
+    var userId = request.params.userId;
+
+    // then render the new item form, passing along the user ID to the form
+    response.render('items/new', {
+        userId: userId
+    })
+});
+
+// ADD A NEW ITEM
+router.post('/:userId/items', function (request, response) {
+
+    // grab the user ID we want to create a new item for
+    var userId = request.params.userId;
+
+    // then grab the new Item that we created using the form
+    var newItemName = request.body.name;
+
+    // Find the User in the database we want to save the new Item for
+    Restaurant.findById(userId)
+        .exec(function (err, user) {
+
+            // add a new Item to the User's list of items, using the data
+            // we grabbed off of the form
+            user.items.push(new Item({ name: newItemName }));
+
+            // once we have added the new Item to the user's collection 
+            // of items, we can save the user
+            user.save(function (err) {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+
+                // once the user has been saved, we can redirect back 
+                // to the User's show page, and we should see the new item
+                response.redirect('/restaurants/' + userId);
+            })
+        });
+});
+
 
 
 

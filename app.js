@@ -12,7 +12,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 
 require('dotenv').config();
-var restaurants = require('./routes/restaurants');
+var restaurants = require('./routes/restaurantsController.js');
 
 var app = express();
 

@@ -3,6 +3,9 @@ mongoose.connect('mongodb://localhost/project-two');
 
 var Restaurant = require("./models/restaurant");
 
+//use native promises
+mongoose.Promise = global.Promise;
+
 Restaurant.remove({}, function(error){
     console.log(error);
 });
@@ -10,7 +13,8 @@ Restaurant.remove({}, function(error){
 var tassilisRawReality = new Restaurant({
     name: 'Tassilis Raw Reality',
     description: 'Atlanta Raw Vegan Cafe',
-    phoneNumber:  '404-343-6126'
+    phoneNumber:  '404-343-6126',
+    items: [{name: "Sout of the Nile Wraps"}]
 });
 
 var tassilisrawReality = new Restaurant({
