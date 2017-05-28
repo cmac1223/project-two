@@ -214,6 +214,94 @@ router.post('/:userId/items', function (request, response) {
         });
 });
 
+//remove an item
+router.get('/:userId/items/:itemId/delete', function (request, response){
+    //grab the ID of the user we would like to delete an item for
+    var userId = request.params.userId;
+
+    //grab the ID of the Item we would like to delete for the User Id above
+    var itemId = request.params.itemId;
+
+    // use Mongoose to find the User by its ID and delete the Item
+    // that matches our Item ID
+    Restaurant.findByIdAndUpdate(userId, {
+        $pull: {
+            items: { _id: itemId }
+        }
+    })
+        .exec(function (error, item){
+            if (error) {
+                console.log("Error while trying to delete item :" + error);
+                return;
+            }
+
+            // once we have deleted the item, redirect to the user's show page
+            response.redirect('/restaurants/' + userId);
+        })
+});
+
+//show the item edit form
+router.get('/:userId/items/:itemId/edit', function (request, response){
+    //grab the ID of the user whose Item would like to edit
+    var userId = request.params.userId;
+
+    //then grab the ID of the Item we would like to edit for the User above
+    var itemId = request.params.itemId;
+
+    //find the User by ID
+    Restaurant.findById(userId)
+        .exec(function (error, user){
+            //once we have found the Restaurant, find the Item in its' array
+            //of items that matches the Item ID above
+            var itemToEdit = user.items.find(function (item){
+                return item.id === itemId;
+            })
+
+            //Once we have found the item we would like edit, render the
+            //Item edit form with all of the information we would like to put
+            //into the form
+            response.render('items/edit', {
+                userId: userId,
+                itemId: itemId,
+                itemToEdit: itemToEdit
+            })
+        })
+})
+
+//edit an item
+router.put('/:userId/items/:itemId', function (request, response){
+    //find the ID of the user we would like to edit
+    var userId = request.params.userId;
+    //find the Id of the Item we would like to edit for the User above
+    var itemId = request.params.itemId;
+    //grab the edited information about the Item from the form
+    var editedItemForm = request.body;
+
+    //find the User by ID
+    Restaurant.findById(userId)
+        .exec(function (error, user){
+            //once we have found the Restaurant, find the Item in the restaurant's
+            //collection of Items that matches our Item ID above
+            var itemToEdit = user.items.find(function (item){
+                return item.id === itemId;
+            })
+
+            //update the item we would like to edit with the new 
+            //information from the form
+            itemToEdit.name = editedItemForm.name;
+
+            //once we have edited the Item, save the user to the database
+            user.save(function (error, user){
+                //once we have saved the restaurant with its edited Item, redirect
+                //to the show page for that Restaurant. we should see the Item
+                // information updated.
+                response.redirect('/restaurants/' + userId)
+            });
+        });
+});
+
+
+
 
 
 
