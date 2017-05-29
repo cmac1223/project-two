@@ -1,18 +1,23 @@
 <div class="frame" >
+<div class="page-header">
+  <h1>View Restaurant <small>Make Changes</small></h1>
+</div>
+
+<div>
     <div class="id">Id: {{user._id}}</div>
     <div class="name">
-    <div>Name: {{user.name}}</div>
-    <div>Description: {{user.description}}</div>
-    <div>phoneNumber: {{user.phoneNumber}}</div>
-    <div> Items:
+    <h1>Name: {{user.name}}</h1>
+    <h2>Description: {{user.description}}</h2>
+    <h2>phone Number: {{user.phoneNumber}}</h2>
+    <h2> FAVORITE ITEMS:
         <ul>
             {{# each user.items}}
-                <span><li>Items: {{name}}</li></span> 
+                <span><h2>Items: {{name}}</h2></span> 
                 <span><a href="/restaurants/{{../user.id}}/items/{{id}}/edit" class="btn btn-default btn-xs">Edit</a></span>
                 <span><a href="/restaurants/{{../user.id}}/items/{{id}}/delete" class="btn btn-default btn-xs" >Delete</a></span>
             {{/ each}}
         </ul>
-    </div>
+    </h2>
 
 <div><a href="/restaurants/edit/{{user.id}}">Edit This restaurant</a></div>
     <div><a href="/restaurants/{{user._id}}/items/new">Add a New Item</a></div>

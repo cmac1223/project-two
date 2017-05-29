@@ -5,13 +5,15 @@ mongoose.promise = global.Promise;
 
 var ItemSchema = new Schema({
     name: String
+   
 });
 
 var RestaurantSchema = new Schema({
     name: String,
     description: String,
     phoneNumber: String,
-    items: [ItemSchema]
+    items: [ItemSchema],
+    img: String
 });
 
 RestaurantSchema.pre('save', function(next){

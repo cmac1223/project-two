@@ -40,9 +40,10 @@ ol li {
 
 .page-header {
   color: green;
+  background-color: white;
 }
 .frame {
-  background-color: #243028
+  background-color: #243028;
 }
 
 .name {

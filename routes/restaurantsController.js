@@ -12,8 +12,8 @@ router.get('/', function (request, response) {
 
     // find all of the users
     Restaurant.find({})
-        .exec(function (error, userList) {
-            console.log(userList)
+        .exec(function (error, restaurantList) {
+            console.log(restaurantList)
             
 
 
@@ -24,7 +24,7 @@ router.get('/', function (request, response) {
 
             // then pass the list of users to Handlebars to render
             response.render('restaurants/index', {
-                restaurantList: userList
+                restaurantList: restaurantList
                 
             });
         })
@@ -50,7 +50,8 @@ router.post('/', function (request, response) {
     var user = new Restaurant({
         name: newRestaurantForm.name,
         description: newRestaurantForm.description,
-        phoneNumber: newRestaurantForm.phoneNumber
+        phoneNumber: newRestaurantForm.phoneNumber,
+       
     });
 
 
