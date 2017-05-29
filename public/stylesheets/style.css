@@ -1,8 +1,63 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-align: center;
 }
 
 a {
-  color: #00B7FF;
+  color: #000;
+}
+
+a:hover {
+  color: #f2e607;
+}
+
+ol {
+  list-style-type: none;
+  padding: 20px 0px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0px;
+}
+
+ol li {
+  padding-bottom: 15px;
+}
+
+.btn.btn-primary, .btn.btn-danger {
+  margin-top: 20px;
+}
+
+.btn.btn-default {
+  margin-top: 50px;
+}
+
+.id {
+  display: none
+}
+
+.page-header {
+  color: green;
+}
+.frame {
+  background-color: #243028
+}
+
+.name {
+  color: #d6650e
+}
+
+.items {
+  color: #d5fc11
+}
+
+.itemTitle {
+  color: #d5fc11
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
 }

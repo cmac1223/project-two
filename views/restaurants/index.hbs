@@ -1,24 +1,36 @@
 
+ <!-- JUMBOTRON -->
+ <div class="frame">
+  <div class="jumbotron text-center">
+    <div class="container">
+      <h1>Weclome to V.Society</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor.</p>
+      <a href="#" class="btn btn-primary">Read More</a>
+    </div>
+  </div>
 
 <ul>
     {{#each restaurantList}}
         <li>
-            <div><a href="/restaurants/{{_id}}">Check Out Restaurants</a></div>
-            <div><a href="/restaurants/delete/{{_id}}">Delete Restaurants</a></div>
-            <div>ID: {{_id}}</div>
-            <h1> Name: {{name}}</h1>
-            <h2>Description: {{description}}</h2>
-            <div>Phone Number: {{phoneNumber}}</div>
-            <div>Items: 
-                <ul>
+            <div><a id="edit" href="/restaurants/{{_id}}">VIEW RESTAURANTS</a></div>
+            <div class="id" >ID: {{_id}}</div>
+                <div class="name"><h1> Name: {{name}}</h1>
+                <h3>Description: {{description}}</h2>
+                <div>Phone Number: {{phoneNumber}}</div>
+            </div>
+            <div class="itemTitle">Items: 
+                <ul class="items">
                     {{# each items}}
-                        <li>Name: {{name}}</li>
+                        <li>Menu Favorites: {{name}}</li>
                     {{/ each}}
                 </ul>
+            <div><a href="/restaurants/delete/{{_id}}" class="btn btn-danger" >Delete Restaurants</a></div>    
             </div>
         </li>
         <br>
     {{/each}}
 </ul>
 
-<div><a href="/restaurants/new">Create a New User</a></div>
+<div><a href="/restaurants/new" >Add a new Restaurant</a></div>
+ </div>

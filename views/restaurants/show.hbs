@@ -1,23 +1,22 @@
-<div>
-    <div>Id: {{user._id}}</div>
-
-    <h1>Name: {{user.name}}</h1>
-    <h2>Description: {{user.description}}</h2>
-    <h2>phoneNumber: {{user.phoneNumber}}</h2>
-    
-    
-    <h3>Items: 
+<div class="frame" >
+    <div class="id">Id: {{user._id}}</div>
+    <div class="name">
+    <div>Name: {{user.name}}</div>
+    <div>Description: {{user.description}}</div>
+    <div>phoneNumber: {{user.phoneNumber}}</div>
+    <div> Items:
         <ul>
             {{# each user.items}}
-                <span><li>Name: {{name}}</li></span> 
-                <span><a href="/restaurants/{{../user.id}}/items/{{id}}/edit">Edit</a></span>
-                <span><a href="/restaurants/{{../user.id}}/items/{{id}}/delete">Delete</a></span>
+                <span><li>Items: {{name}}</li></span> 
+                <span><a href="/restaurants/{{../user.id}}/items/{{id}}/edit" class="btn btn-default btn-xs">Edit</a></span>
+                <span><a href="/restaurants/{{../user.id}}/items/{{id}}/delete" class="btn btn-default btn-xs" >Delete</a></span>
             {{/ each}}
         </ul>
-    </h3>
+    </div>
 
-    <div><a href="/restaurants/edit/{{user.id}}">Edit This restaurant</a></div>
+<div><a href="/restaurants/edit/{{user.id}}">Edit This restaurant</a></div>
     <div><a href="/restaurants/{{user._id}}/items/new">Add a New Item</a></div>
     <div><a href="/restaurants" class="btn btn-default">Main Page</a></div>
 
+</div>
 </div>
