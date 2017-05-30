@@ -12,7 +12,8 @@ Trello:
 
 https://trello.com/b/wkK06JGL/v-society
 
-github:
+Heroku:
+https://desolate-temple-38809.herokuapp.com/restaurants
 
 
 
