@@ -4,6 +4,10 @@ body {
   text-align: center;
 }
 
+.jumbotron {
+  font-family: 'Yellowtail', cursive;
+}
+
 a {
   color: #000;
 }
@@ -47,7 +51,8 @@ ol li {
 }
 
 .name {
-  color: #d6650e
+  color: #d6650e;
+  
 }
 
 .items {

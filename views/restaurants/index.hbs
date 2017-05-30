@@ -23,8 +23,11 @@
                     {{# each items}}
                         <li>Menu Favorites: {{name}}</li>
                     {{/ each}}
+                    <br>
+                    <br>
+                    <hr>
                 </ul>
-            <div><a href="/restaurants/delete/{{_id}}" class="btn btn-danger" >Delete Restaurants</a></div>    
+            {{!--<div><a href="/restaurants/delete/{{_id}}" class="btn btn-danger" >Delete Restaurants</a></div>    --}}
             </div>
         </li>
         <br>
@@ -32,4 +35,5 @@
 </ul>
 
 <div><a href="/restaurants/new" >Add a new Restaurant</a></div>
+<div><a href="/restaurants/delete/{{_id}}" class="btn btn-danger" >Delete Restaurants</a></div>
  </div>

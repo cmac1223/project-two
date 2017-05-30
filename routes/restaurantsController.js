@@ -13,11 +13,8 @@ router.get('/', function (request, response) {
     // find all of the users
     Restaurant.find({})
         .exec(function (error, restaurantList) {
-            console.log(restaurantList)
-            
-
-
-            if (error) {
+         
+             if (error) {
                 console.log("Error while retrieving restaurant: " + error);
                 return;
             }
@@ -50,7 +47,7 @@ router.post('/', function (request, response) {
     var user = new Restaurant({
         name: newRestaurantForm.name,
         description: newRestaurantForm.description,
-        phoneNumber: newRestaurantForm.phoneNumber,
+        phoneNumber: newRestaurantForm.phoneNumber
        
     });
 
@@ -70,35 +67,12 @@ router.post('/', function (request, response) {
 
 
 
-// USER SHOW ROUTE
-router.get('/:id', function (request, response) {
 
-    // grab the ID of the user we want to show
-    var userId = request.params.id;
-
-    // then find the user in the database using the ID
-    Restaurant.findById(userId)
-        .exec(function (error, user) {
-
-            if (error) {
-                console.log("Error while retrieving user with ID of " + userId);
-                console.log("Error message: " + error);
-                return;
-            }
-
-            // once we've found the user, pass the user object to Handlebars to render
-            response.render('restaurants/show', {
-                restaurantList: userId,
-                user: user
-            });
-        });
-
-});
 
 
 
 // USER EDIT ROUTE
-router.get('/edit/:id', function (request, response) {
+router.get('/:id/edit', function (request, response) {
 
     // grab the ID of the user we want to edit from the parameters
     var userId = request.params.id;
@@ -123,6 +97,38 @@ router.get('/edit/:id', function (request, response) {
 
 
 
+
+
+// USER SHOW ROUTE
+router.get('/:id', function (request, response) {
+
+    // grab the ID of the user we want to show
+    var userId = request.params.id;
+
+    // then find the user in the database using the ID
+    Restaurant.findById(userId)
+        .exec(function (error, user) {
+
+            if (error) {
+                console.log("User show page Error while retrieving user with ID of " + userId);
+                console.log("Error message: " + error);
+                return;
+            }
+
+            // once we've found the user, pass the user object to Handlebars to render
+            response.render('restaurants/show', {
+                // restaurantList: userId,
+                user: user,
+                userId: userId
+            });
+        });
+
+});
+
+
+
+
+
 // USER UPDATE ROUTE
 router.put('/:id', function (request, response) {
 
@@ -131,6 +137,7 @@ router.put('/:id', function (request, response) {
 
     // then grab the edited user info from the form's PUT request
     var newUserInfo = request.body;
+    console.log(newUserInfo);
 
     // then find the user in the database, and update its info to
     // match what was updated in the form
@@ -145,6 +152,7 @@ router.put('/:id', function (request, response) {
 
             // once we have found the user and updated it, redirect to 
             // that user's show route
+            console.log(newUserInfo);
             response.redirect('/restaurants/' + userId);
 
         });

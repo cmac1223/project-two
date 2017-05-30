@@ -5,23 +5,30 @@
 
 <div>
     <div class="id">Id: {{user._id}}</div>
-    <div class="name">
-    <h1>Name: {{user.name}}</h1>
-    <h2>Description: {{user.description}}</h2>
-    <h2>phone Number: {{user.phoneNumber}}</h2>
-    <h2> FAVORITE ITEMS:
-        <ul>
-            {{# each user.items}}
-                <span><h2>Items: {{name}}</h2></span> 
-                <span><a href="/restaurants/{{../user.id}}/items/{{id}}/edit" class="btn btn-default btn-xs">Edit</a></span>
-                <span><a href="/restaurants/{{../user.id}}/items/{{id}}/delete" class="btn btn-default btn-xs" >Delete</a></span>
-            {{/ each}}
-        </ul>
-    </h2>
+        <div class="name">
+            <h1>Name: {{user.name}}</h1>
+            <h2>Description: {{user.description}}</h2>
+            <h2>phone Number: {{user.phoneNumber}}</h2>
+                <br>
+                <br>
+                <br>
+                <br>
+    </div>
+    <div class="items">
+        <h2> FAVORITE ITEMS:
+            <ul>
+                {{# each user.items}}
+                    <span><h2>Items: {{name}}</h2></span> 
+                    <span><a href="/restaurants/{{../user.id}}/items/{{id}}/edit" class="btn btn-default btn-xs">Edit</a></span>
+                    <span><a href="/restaurants/{{../user.id}}/items/{{id}}/delete" class="btn btn-default btn-xs" >Delete</a></span>
+                {{/ each}}
+            </ul>
+        </h2>
+    </div>
 
-<div><a href="/restaurants/edit/{{user.id}}">Edit This restaurant</a></div>
+<div><a href="/restaurants/{{userId}}/edit">Edit This restaurant</a></div>
     <div><a href="/restaurants/{{user._id}}/items/new">Add a New Item</a></div>
     <div><a href="/restaurants" class="btn btn-default">Main Page</a></div>
 
-</div>
+
 </div> 
